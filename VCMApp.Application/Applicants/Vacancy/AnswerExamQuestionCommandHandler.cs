@@ -26,22 +26,29 @@ namespace VCMApp.Application.Applicants.Vacancy
         public async Task<Result> Handle(AnswerExamQuestionCommand request,
                                                 CancellationToken cancellationToken)
         {
-            var sessionApp = await _applicationRepository.GetBySessionGuid(request.ApplicationSessionGuid);
+            try
+            {
+                var sessionApp = await _applicationRepository.GetBySessionGuid(request.ApplicationSessionGuid);
 
-            if (sessionApp == null || !sessionApp.IsActive || sessionApp.EndDate <= DateTime.UtcNow)
-                return Result.Failure("Exam session is no longer active.");
+                if (sessionApp == null || !sessionApp.IsActive || sessionApp.EndDate <= DateTime.UtcNow)
+                    return Result.Failure("Exam session is no longer active.");
 
-            var unansweredQuestion = await _applicantRepository.GetApplicantAnswer(sessionApp.Id, request.QuestionId);
+                var unansweredQuestion = await _applicantRepository.GetApplicantAnswer(sessionApp.Id, request.QuestionId);
 
-            if (unansweredQuestion == null)
-               return Result.Failure("Question/Answer not exists!");
+                if (unansweredQuestion == null)
+                    return Result.Failure("Question/Answer not exists!");
 
-            unansweredQuestion.SelectedExamQuestionOptionId = request.AnswerOptionId;
+                unansweredQuestion.SelectedExamQuestionOptionId = request.AnswerOptionId;
 
-            _applicantRepository.UpdateApplicantAnswer(unansweredQuestion);
-            await _applicantRepository.SaveChangesAsync();
+                _applicantRepository.UpdateApplicantAnswer(unansweredQuestion);
+                await _applicantRepository.SaveChangesAsync();
 
-            return Result.Success();
+                return Result.Success();
+            }
+            catch (Exception ex)
+            {
+                return Result.Failure(ex.Message);
+            }
         }
     }
 }
