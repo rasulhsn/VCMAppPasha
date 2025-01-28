@@ -40,6 +40,6 @@ Database: SQL Server
   `git clone https://github.com/rasulhsn/VCMAppPasha.git`
 2. Navigate to the project directory:
   `cd VCMAppPasha`
-3. Set up the database connection string in the configuration file.
+3. Set up the database connection string in the configuration file (appsettings.json).
 4. Run the application:
   `dotnet run`
