@@ -1,5 +1,5 @@
 # VCMAppPasha
-
+![PashaInsuranceTaskVideo](https://github.com/user-attachments/assets/73e03a4b-a713-4e2a-a7b7-96c2ae0a1270)
 ## Overview
 This project is a Vacancy Management Application developed as part of a task for Pasha Insurance. The application facilitates the full lifecycle of vacancy management, including guest-side and admin-side functionalities.
 
@@ -57,6 +57,3 @@ ORM: EntityFramework Core
 3. Set up the database connection string in the configuration file (appsettings.json).
 4. Run the application:
   `dotnet run`
-
-
-![PashaInsuranceTaskVideo](https://github.com/user-attachments/assets/73e03a4b-a713-4e2a-a7b7-96c2ae0a1270)
