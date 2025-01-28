@@ -15,6 +15,19 @@ Dashboard: Provides an overview of vacancies, applications, and exams.
 Exam Results Management: Admins can view exam results, including detailed answers for each candidate.
 
 ### Architecture
+```mermaid
+graph TB
+    subgraph Architecture
+        A[Presentation Layer]
+        B[Application Layer]
+        C[Domain Layer]
+        D[Infrastructure Layer]
+    end
+
+    A --> B
+    B --> C
+    C --> D
+```
 The application follows the Clean Architecture principles, ensuring:
 
 Separation of concerns.
