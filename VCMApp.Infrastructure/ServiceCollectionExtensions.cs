@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using VCMApp.Application.Contracts;
 using VCMApp.Infrastructure.Persistence;
-using VCMApp.Infrastructure.Repositories.Abstract;
-using VCMApp.Infrastructure.Repositories.Implementation;
+using VCMApp.Infrastructure.Repositories;
 
 namespace VCMApp.Infrastructure
 {

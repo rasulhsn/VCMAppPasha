@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VCMApp.Application\VCMApp.Application.csproj" />
-    <ProjectReference Include="..\VCMApp.Infrastructure\VCMApp.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

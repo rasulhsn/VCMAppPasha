@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using VCMApp.Infrastructure.Entities;
+using VCMApp.LightDomain.Entities;
 
 namespace VCMApp.Infrastructure.Persistence
 {
@@ -15,7 +15,7 @@ namespace VCMApp.Infrastructure.Persistence
         public DbSet<VacancyExamQuestion> VacancyExamQuestions { get; set; }
         public DbSet<Applicant> Applicants { get; set; }
         public DbSet<ApplicantCV> ApplicantCVs { get; set; }
-        public DbSet<Application> Applications { get; set; }
+        public DbSet<LightDomain.Entities.Application> Applications { get; set; }
         public DbSet<ApplicantExamAnswer> ApplicantExamAnswers { get; set; }
         public DbSet<ApplicantExamResult> ApplicantExamResults { get; set; }
 
@@ -55,12 +55,12 @@ namespace VCMApp.Infrastructure.Persistence
                 .WithMany(e => e.VacancyExamQuestions)
                 .HasForeignKey(v => v.ExamQuestionId);
 
-            modelBuilder.Entity<Application>()
+            modelBuilder.Entity<LightDomain.Entities.Application>()
                 .HasOne(a => a.Applicant)
                 .WithMany(a => a.Applications)
                 .HasForeignKey(a => a.ApplicantId);
 
-            modelBuilder.Entity<Application>()
+            modelBuilder.Entity<LightDomain.Entities.Application>()
                 .HasOne(a => a.Vacancy)
                 .WithMany(v => v.Applications)
                 .HasForeignKey(a => a.VacancyId);

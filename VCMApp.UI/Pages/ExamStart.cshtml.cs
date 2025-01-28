@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using VCMApp.Application.Applicants.Vacancy;
 using VCMApp.Application.DTOs;
+using VCMApp.LightDomain.DTOs;
 
 namespace VCMApp.UI.Pages
 {

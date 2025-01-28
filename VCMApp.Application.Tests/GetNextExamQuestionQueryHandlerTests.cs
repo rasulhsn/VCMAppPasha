@@ -1,7 +1,7 @@
 using Moq;
 using VCMApp.Application.Applicants.Vacancy;
-using VCMApp.Application.DTOs.ErrorTypes;
-using VCMApp.Infrastructure.Repositories.Abstract;
+using VCMApp.Application.Contracts;
+using VCMApp.LightDomain.DTOs.ErrorTypes;
 
 namespace VCMApp.Application.Tests
 {
@@ -38,7 +38,7 @@ namespace VCMApp.Application.Tests
 
             _applicationRepositoryMock
                 .Setup(repo => repo.GetBySessionGuid(query.SessionId))
-                .ReturnsAsync(new Infrastructure.Entities.Application
+                .ReturnsAsync(new LightDomain.Entities.Application
                 {
                     IsActive = false,
                     EndDate = DateTime.UtcNow.AddDays(-1)
@@ -64,7 +64,7 @@ namespace VCMApp.Application.Tests
 
             _applicationRepositoryMock
                 .Setup(repo => repo.GetBySessionGuid(query.SessionId))
-                .ReturnsAsync(new Infrastructure.Entities.Application
+                .ReturnsAsync(new LightDomain.Entities.Application
                 {
                     Id = 1,
                     IsActive = true,

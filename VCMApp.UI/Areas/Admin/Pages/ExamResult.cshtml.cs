@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using VCMApp.Application.Admins.Exams;
 using VCMApp.Application.Admins.Statistics;
-using VCMApp.Infrastructure.Entities;
+using VCMApp.LightDomain.DTOs;
 
 namespace VCMApp.UI.Areas.Admin.Pages
 {

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using VCMApp.Application;
+using VCMApp.Infrastructure;
 
 namespace VCMApp.UI
 {
@@ -10,6 +11,7 @@ namespace VCMApp.UI
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddApplicationServices(builder.Configuration);
+            builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddRazorPages();
             builder.Services.AddSession();
 
@@ -25,6 +27,7 @@ namespace VCMApp.UI
             var app = builder.Build();
 
             app.ApplicationStart();
+            app.InfrastructureStart();
 
             if (!app.Environment.IsDevelopment())
             {

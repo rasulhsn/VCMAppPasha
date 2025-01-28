@@ -1,7 +1,7 @@
 ﻿using Moq;
 using VCMApp.Application.Applicants.Vacancy;
-using VCMApp.Infrastructure.Entities;
-using VCMApp.Infrastructure.Repositories.Abstract;
+using VCMApp.Application.Contracts;
+using VCMApp.LightDomain.Entities;
 
 namespace VCMApp.Application.Tests
 {
@@ -37,7 +37,7 @@ namespace VCMApp.Application.Tests
 
             _applicationRepositoryMock
                 .Setup(repo => repo.GetBySessionGuid(command.ApplicationSessionGuid))
-                .ReturnsAsync(new Infrastructure.Entities.Application
+                .ReturnsAsync(new LightDomain.Entities.Application
                 {
                     IsActive = false
                 });
@@ -47,7 +47,7 @@ namespace VCMApp.Application.Tests
 
             // Assert
             Assert.IsTrue(result.IsSuccess);
-            _applicationRepositoryMock.Verify(repo => repo.Update(It.IsAny<Infrastructure.Entities.Application>()), Times.Never);
+            _applicationRepositoryMock.Verify(repo => repo.Update(It.IsAny<LightDomain.Entities.Application>()), Times.Never);
             _applicantRepositoryMock.Verify(repo => repo.AddApplicantExamResult(It.IsAny<ApplicantExamResult>()), Times.Never);
         }
 
@@ -60,7 +60,7 @@ namespace VCMApp.Application.Tests
                 ApplicationSessionGuid = Guid.NewGuid()
             };
 
-            var sessionApp = new Infrastructure.Entities.Application
+            var sessionApp = new LightDomain.Entities.Application
             {
                 Id = 1,
                 IsActive = true,
@@ -87,7 +87,7 @@ namespace VCMApp.Application.Tests
                 .ReturnsAsync(true);
 
             _applicationRepositoryMock
-                .Setup(repo => repo.Update(It.IsAny<Infrastructure.Entities.Application>()))
+                .Setup(repo => repo.Update(It.IsAny<LightDomain.Entities.Application>()))
                 .Verifiable();
 
             _applicantRepositoryMock
@@ -103,7 +103,7 @@ namespace VCMApp.Application.Tests
 
             // Assert
             Assert.IsTrue(result.IsSuccess);
-            _applicationRepositoryMock.Verify(repo => repo.Update(It.IsAny<Infrastructure.Entities.Application>()), Times.Once);
+            _applicationRepositoryMock.Verify(repo => repo.Update(It.IsAny<LightDomain.Entities.Application>()), Times.Once);
             _applicantRepositoryMock.Verify(repo => repo.AddApplicantExamResult(It.IsAny<ApplicantExamResult>()), Times.Once);
             _applicantRepositoryMock.Verify(repo => repo.SaveChangesAsync(), Times.Once);
         }
@@ -117,7 +117,7 @@ namespace VCMApp.Application.Tests
                 ApplicationSessionGuid = Guid.NewGuid()
             };
 
-            var sessionApp = new Infrastructure.Entities.Application
+            var sessionApp = new LightDomain.Entities.Application
             {
                 Id = 1,
                 IsActive = true,
@@ -146,7 +146,7 @@ namespace VCMApp.Application.Tests
                 .ReturnsAsync(false);
 
             _applicationRepositoryMock
-                .Setup(repo => repo.Update(It.IsAny<Infrastructure.Entities.Application>()))
+                .Setup(repo => repo.Update(It.IsAny<LightDomain.Entities.Application>()))
                 .Verifiable();
 
             _applicantRepositoryMock
@@ -162,7 +162,7 @@ namespace VCMApp.Application.Tests
 
             // Assert
             Assert.IsTrue(result.IsSuccess);
-            _applicationRepositoryMock.Verify(repo => repo.Update(It.IsAny<Infrastructure.Entities.Application>()), Times.Once);
+            _applicationRepositoryMock.Verify(repo => repo.Update(It.IsAny<LightDomain.Entities.Application>()), Times.Once);
             _applicantRepositoryMock.Verify(repo => repo.AddApplicantExamResult(It.IsAny<ApplicantExamResult>()), Times.Once);
             _applicantRepositoryMock.Verify(repo => repo.SaveChangesAsync(), Times.Once);
         }
@@ -176,7 +176,7 @@ namespace VCMApp.Application.Tests
                 ApplicationSessionGuid = Guid.NewGuid()
             };
 
-            var sessionApp = new Infrastructure.Entities.Application
+            var sessionApp = new LightDomain.Entities.Application
             {
                 Id = 1,
                 IsActive = true,
@@ -192,7 +192,7 @@ namespace VCMApp.Application.Tests
                 .ReturnsAsync(new List<ApplicantExamAnswer>());
 
             _applicationRepositoryMock
-                .Setup(repo => repo.Update(It.IsAny<Infrastructure.Entities.Application>()))
+                .Setup(repo => repo.Update(It.IsAny<LightDomain.Entities.Application>()))
                 .Verifiable();
 
             _applicantRepositoryMock
@@ -208,7 +208,7 @@ namespace VCMApp.Application.Tests
 
             // Assert
             Assert.IsTrue(result.IsSuccess);
-            _applicationRepositoryMock.Verify(repo => repo.Update(It.IsAny<Infrastructure.Entities.Application>()), Times.Once);
+            _applicationRepositoryMock.Verify(repo => repo.Update(It.IsAny<LightDomain.Entities.Application>()), Times.Once);
             _applicantRepositoryMock.Verify(repo => repo.AddApplicantExamResult(It.IsAny<ApplicantExamResult>()), Times.Once);
             _applicantRepositoryMock.Verify(repo => repo.SaveChangesAsync(), Times.Once);
         }

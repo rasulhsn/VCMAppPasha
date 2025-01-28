@@ -1,7 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
 using MediatR;
-using VCMApp.Application.DTOs;
-using VCMApp.Infrastructure.Repositories.Abstract;
+using VCMApp.Application.Contracts;
+using VCMApp.LightDomain.DTOs;
 
 namespace VCMApp.Application.Applicants.Vacancy
 {
@@ -28,7 +28,7 @@ namespace VCMApp.Application.Applicants.Vacancy
         {
             var vacancyExamDetail = await _vacancyRepository.GetVacancyExamDetailByVacancyId(request.VacancyId);
 
-            var applicationEntity = new Infrastructure.Entities.Application()
+            var applicationEntity = new LightDomain.Entities.Application()
             {
                 VacancyId = request.VacancyId,
                 ApplicantId = request.ApplicantId,

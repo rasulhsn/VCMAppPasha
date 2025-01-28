@@ -1,8 +1,9 @@
 ﻿using CSharpFunctionalExtensions;
 using MediatR;
-using VCMApp.Application.DTOs;
-using VCMApp.Application.DTOs.ErrorTypes;
-using VCMApp.Infrastructure.Repositories.Abstract;
+using VCMApp.Application.Contracts;
+using VCMApp.LightDomain.DTOs;
+using VCMApp.LightDomain.DTOs.ErrorTypes;
+using VCMApp.LightDomain.Entities;
 
 namespace VCMApp.Application.Applicants.Vacancy
 {
@@ -72,7 +73,7 @@ namespace VCMApp.Application.Applicants.Vacancy
                     Options = questionOptions
                 };
 
-                await _applicantRepository.AddApplicantAnswer(new Infrastructure.Entities.ApplicantExamAnswer()
+                await _applicantRepository.AddApplicantAnswer(new ApplicantExamAnswer()
                 {
                     ApplicationId = sessionApp.Id,
                     ExamQuestionId = examQuestionDto.QuestionId,

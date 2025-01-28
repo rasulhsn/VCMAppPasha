@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VCMApp.Application", "VCMAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VCMApp.UI", "VCMApp.UI\VCMApp.UI.csproj", "{901A9F65-A9EF-4BE1-A075-F66C8ECA8462}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCMApp.Application.Tests", "VCMApp.Application.Tests\VCMApp.Application.Tests.csproj", "{88B69DA9-EB3A-4362-BD7A-8718BEB493E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VCMApp.Application.Tests", "VCMApp.Application.Tests\VCMApp.Application.Tests.csproj", "{88B69DA9-EB3A-4362-BD7A-8718BEB493E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCMApp.LightDomain", "VCMApp.LightDomain\VCMApp.LightDomain.csproj", "{3AF54CE4-B3AB-4B7C-912F-33A7C7D1D65D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{88B69DA9-EB3A-4362-BD7A-8718BEB493E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88B69DA9-EB3A-4362-BD7A-8718BEB493E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88B69DA9-EB3A-4362-BD7A-8718BEB493E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AF54CE4-B3AB-4B7C-912F-33A7C7D1D65D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AF54CE4-B3AB-4B7C-912F-33A7C7D1D65D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AF54CE4-B3AB-4B7C-912F-33A7C7D1D65D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AF54CE4-B3AB-4B7C-912F-33A7C7D1D65D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

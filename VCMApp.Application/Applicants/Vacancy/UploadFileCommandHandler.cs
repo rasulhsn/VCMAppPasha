@@ -1,6 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
 using MediatR;
-using VCMApp.Infrastructure.Repositories.Abstract;
+using VCMApp.Application.Contracts;
+using VCMApp.LightDomain.Entities;
 
 namespace VCMApp.Application.Applicants.Vacancy
 {
@@ -14,7 +15,7 @@ namespace VCMApp.Application.Applicants.Vacancy
 
     public class UploadFileCommandHandler : IRequestHandler<UploadFileCommand, Result>
     {
-        private const long MaxFileSize = 5 * 1024 * 1024; // 5 MB
+        private const long MaxFileSize = 5 * 1024 * 1024;
         private readonly string[] AllowedTypes = { "application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" };
 
         private readonly IApplicationRepository _applicationRepository;
@@ -48,7 +49,7 @@ namespace VCMApp.Application.Applicants.Vacancy
             var filePath = Path.Combine("Uploads", $"{Guid.NewGuid()}_{request.FileName}");
             await File.WriteAllBytesAsync(filePath, request.FileContent, cancellationToken);
 
-            await _applicantRepository.AddApplicantCv(new Infrastructure.Entities.ApplicantCV()
+            await _applicantRepository.AddApplicantCv(new ApplicantCV()
             {
                 ApplicantId = application.ApplicantId,
                 UploadDate = DateTime.UtcNow,

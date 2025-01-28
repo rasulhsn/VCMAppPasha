@@ -1,6 +1,6 @@
 ﻿using CSharpFunctionalExtensions;
 using MediatR;
-using VCMApp.Infrastructure.Repositories.Abstract;
+using VCMApp.Application.Contracts;
 
 namespace VCMApp.Application.Applicants.Vacancy
 {

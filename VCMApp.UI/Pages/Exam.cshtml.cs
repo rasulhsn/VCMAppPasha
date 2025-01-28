@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using VCMApp.Application.Applicants.Vacancy;
 using VCMApp.Application.DTOs;
+using VCMApp.LightDomain.DTOs;
+using VCMApp.LightDomain.DTOs.ErrorTypes;
 
 namespace VCMApp.UI.Pages
 {
@@ -47,7 +49,7 @@ namespace VCMApp.UI.Pages
 
                     return RedirectToPage("Exam", new { QuestionIndex = _currentQuestionIndex, TimeInMinute = timeInMinute, IsInternal = false });
                 }
-                else if (examQuestionResult.Error == Application.DTOs.ErrorTypes.ExamErrorType.ExamIsExpired)
+                else if (examQuestionResult.Error == ExamErrorType.ExamIsExpired)
                 {
                     HttpContext.Session.Clear();
                     return RedirectToPage("Error", new { message = "This exam is expired!" });

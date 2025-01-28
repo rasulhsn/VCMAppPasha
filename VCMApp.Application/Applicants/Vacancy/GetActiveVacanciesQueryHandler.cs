@@ -1,7 +1,8 @@
 ﻿using CSharpFunctionalExtensions;
 using MediatR;
-using VCMApp.Application.DTOs;
-using VCMApp.Infrastructure.Repositories.Abstract;
+using VCMApp.Application.Contracts;
+using VCMApp.LightDomain.DTOs;
+
 
 namespace VCMApp.Application.Applicants.Vacancy
 {

@@ -1,7 +1,8 @@
 ﻿using CSharpFunctionalExtensions;
 using MediatR;
-using VCMApp.Application.DTOs;
-using VCMApp.Infrastructure.Repositories.Abstract;
+using VCMApp.Application.Contracts;
+using VCMApp.LightDomain.DTOs;
+using VCMApp.LightDomain.Entities;
 
 namespace VCMApp.Application.Applicants.Vacancy
 {
@@ -27,7 +28,7 @@ namespace VCMApp.Application.Applicants.Vacancy
                                                 CancellationToken cancellationToken)
         {
             // needs to add validation
-            var applicantEntity = new Infrastructure.Entities.Applicant()
+            var applicantEntity = new Applicant()
             {
                 FirstName = request.FirstName,
                 LastName = request.LastName,

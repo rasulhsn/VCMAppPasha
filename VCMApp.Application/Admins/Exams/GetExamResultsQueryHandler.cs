@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
 using CSharpFunctionalExtensions;
 using MediatR;
-using System.Net.Http.Headers;
-using VCMApp.Application.DTOs;
-using VCMApp.Infrastructure.Entities;
-using VCMApp.Infrastructure.Repositories.Abstract;
+using VCMApp.Application.Contracts;
+using VCMApp.LightDomain.DTOs;
 
 namespace VCMApp.Application.Admins.Statistics
 {

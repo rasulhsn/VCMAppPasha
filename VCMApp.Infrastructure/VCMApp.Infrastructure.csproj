@@ -22,4 +22,9 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\VCMApp.Application\VCMApp.Application.csproj" />
+    <ProjectReference Include="..\VCMApp.LightDomain\VCMApp.LightDomain.csproj" />
+  </ItemGroup>
+
 </Project>
