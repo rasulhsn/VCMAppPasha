@@ -34,6 +34,7 @@ The project uses lightweight anemic domain models to keep the domain logic simpl
 Backend: ASP.NET Core
 Frontend: Razor Pages
 Database: SQL Server
+ORM: EntityFramework Core
 
 ## Getting Started
 1. Clone the repository:
