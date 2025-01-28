@@ -12,7 +12,7 @@ namespace VCMApp.Application
         {
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
   
-            //services.AddAutoMapper(typeof(DTOsMapping));
+            services.AddAutoMapper(typeof(DTOsMapping));
 
             return services;
         }
