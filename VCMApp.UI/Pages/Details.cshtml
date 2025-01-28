@@ -1,0 +1,33 @@
+﻿@page "{id:int}"
+@model DetailsModel
+@{
+    ViewData["Title"] = "Vacancy Details";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Vacancy Details</h1>
+</div>
+
+<div class="container mt-5">
+    @if (Model.Vacancy != null)
+    {
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">@Model.Vacancy.Title</h2>
+                <h4 class="card-subtitle text-muted">@Model.Vacancy.Name</h4>
+                <p class="card-text mt-3">@Model.Vacancy.Content</p>
+                <small class="text-muted">
+                    Start Date: @Model.Vacancy.StartDate.ToShortDateString() |
+                    End Date: @Model.Vacancy.EndDate.ToShortDateString()
+                </small>
+                <div class="mt-4">
+                    <a asp-page="/ApplyForm" asp-route-vacancyId="@Model.Vacancy.Id" class="btn btn-primary">Apply</a>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p class="text-danger">Vacancy not found.</p>
+    }
+</div>

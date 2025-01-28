@@ -1,0 +1,25 @@
+﻿@model IEnumerable<VCMApp.Application.DTOs.QuestionAnswerDto>
+
+<div class="list-group">
+    @if (Model != null && Model.Any())
+    {
+        foreach (var answer in Model)
+        {
+            <div class="list-group-item">
+                <h5>@answer.QuestionContent</h5>
+                <p><strong>Answer:</strong> @answer.AnswerContent</p>
+                <p>
+                    <strong>Correct:</strong>
+                    <span class="@(answer.AnswerIsCorrect ? "text-success" : "text-danger")">
+                        @(answer.AnswerIsCorrect ? "Yes" : "No")
+                    </span>
+                </p>
+            </div>
+        }
+    }
+    else
+    {
+        <p class="text-muted">No answer available for this applicant.</p>
+        <p class="text-muted">Applicant could not answer the question, he/she may finish directly!</p>
+    }
+</div>

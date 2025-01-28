@@ -1,0 +1,50 @@
+﻿@page "{vacancyId:int}/{applicantId:int}"
+@model ExamStartModel
+
+<div class="text-center">
+    <h1 class="display-4">Exam Preview</h1>
+    <p class="lead">You're about to begin the exam for the vacancy you applied to. Make sure you're ready!</p>
+</div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center">Exam Details</h2>
+            <p class="text-center"><strong>Total Questions:</strong> @Model.VacancyExamDetail.ExamQuestionCount</p>
+            <p class="text-center"><strong>Total Time:</strong> @Model.VacancyExamDetail.TotalTimeOfTestInMinute minutes</p>
+
+            <div class="mt-4">
+                <h3 class="text-center">Important Instructions:</h3>
+                <ul>
+                    <li>Make sure you have a stable internet connection.</li>
+                    <li>Read each question carefully before selecting your answer.</li>
+                    <li>Once you start the exam, you cannot pause or go back to previous questions.</li>
+                    <li>Ensure that you complete the exam within the given time limit.</li>
+                </ul>
+            </div>
+
+            <div class="mt-4">
+                <h4 class="text-center">Acceptance of Exam Terms</h4>
+                <p class="text-center">By starting this exam, you agree to the following:</p>
+                <ul>
+                    <li>You will not engage in any unfair practices or cheating.</li>
+                    <li>You will complete the exam within the time limit.</li>
+                    <li>Your answers will be recorded and evaluated for selection purposes.</li>
+                    <li>You understand that failure to comply with the exam rules may result in disqualification.</li>
+                </ul>
+            </div>
+
+            <div class="mt-4 text-center">
+                <form method="post" asp-page="/ExamStart">
+                    <input type="hidden" name="vacancyId" value="@Model.VacancyId" />
+                    <input type="hidden" name="applicantId" value="@Model.ApplicantId" />
+                    <button type="submit" class="btn btn-primary">Start Exam</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

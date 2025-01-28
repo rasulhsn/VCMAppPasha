@@ -1,0 +1,35 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Active Vacancies</h1>
+</div>
+
+<div class="container mt-5">
+    @if (Model.ActiveVacancies != null && Model.ActiveVacancies.Any())
+    {
+        <ul class="list-group">
+            @foreach (var vacancy in Model.ActiveVacancies)
+            {
+                <li class="list-group-item mb-3">
+                    <h4>@vacancy.Title</h4>
+                    <p>@vacancy.Name</p>
+                    <small>
+                        Start Date: @vacancy.StartDate.ToShortDateString() |
+                        End Date: @vacancy.EndDate.ToShortDateString()
+                    </small>
+                    <div class="mt-3">
+                        <a asp-page="/Details" asp-route-id="@vacancy.Id" class="btn btn-primary">Show Details</a>
+                    </div>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No active vacancies at the moment.</p>
+    }
+</div>

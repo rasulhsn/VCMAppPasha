@@ -1,0 +1,88 @@
+﻿@page "{sessionId:guid}/{timeInMinute:int}/{questionIndex?}"
+@model VCMApp.UI.Pages.ExamModel
+@{
+    ViewData["Title"] = "Exam Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Exam</h1>
+    <p>Time Remaining: <span id="timer"></span></p>
+</div>
+
+<div class="container d-flex flex-column align-items-center mt-5">
+    @if (Model.CurrentQuestion != null)
+    {
+        <div class="card p-4 shadow-lg" style="width: 50%; max-width: 600px;">
+            <h3 class="mb-3">Question @Model.RouteData.Values["questionIndex"]:</h3>
+            <p class="mb-4">@Model.CurrentQuestion.QuestionContent</p>
+            <form method="post" asp-page-handler="Post" asp-route-sessionId="@Model.RouteData.Values["sessionId"]" asp-route-timeInMinute="@Model.RouteData.Values["timeInMinute"]" asp-route-questionId="@Model.CurrentQuestion.QuestionId" asp-route-questionIndex="@Model.RouteData.Values["questionIndex"]">
+                <div class="mb-4">
+                    @foreach (var option in Model.CurrentQuestion.Options)
+                    {
+                        <div class="form-check mb-2">
+                            <input type="radio"
+                                   class="form-check-input"
+                                   id="option_@option.QuestionOptionId"
+                                   name="SelectedOptionId"
+                                   value="@option.QuestionOptionId"
+                                   onchange="enableNextButton()" />
+                            <label class="form-check-label" for="option_@option.QuestionOptionId">@option.Content</label>
+                        </div>
+                    }
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button id="nextButton" class="btn btn-primary" type="submit" disabled>Next</button>
+                    <a href="/ExamFinish/@Model.RouteData.Values["sessionId"]" class="btn btn-danger">Finish</a>
+                </div>
+            </form>
+        </div>
+    }
+    else
+    {
+        <p class="text-center mt-5">No more questions available. Please finish the exam!</p>
+        <form method="get" asp-page="/ExamFinish" asp-route-sessionId="@Model.RouteData.Values["sessionId"]">
+            <button class="btn btn-danger btn-lg mt-3" type="submit" style="font-size: 1.25rem; padding: 0.75rem 1.5rem;">
+                Finish
+            </button>
+        </form>
+    }
+</div>
+
+<script>
+    const sessionId = "@Model.RouteData.Values["sessionId"]";
+    const initialTimeInMinutes = parseInt("@Model.TimeInMinute");
+    const targetUrl = `/ExamFinish/${sessionId}`;
+    const timerKey = `exam_timer_${sessionId}`;
+
+
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+    }
+
+    let timeInSeconds = parseInt(localStorage.getItem(timerKey)) || initialTimeInMinutes * 60;
+
+
+    function updateTimer() {
+        const timerElement = document.getElementById("timer");
+        timerElement.textContent = formatTime(timeInSeconds);
+
+        if (timeInSeconds <= 0) {
+            localStorage.removeItem(timerKey);
+            window.location.href = targetUrl;
+        } else {
+            timeInSeconds--;
+            localStorage.setItem(timerKey, timeInSeconds);
+            setTimeout(updateTimer, 1000);
+        }
+    }
+
+    updateTimer();
+
+    function enableNextButton() {
+        document.getElementById('nextButton').disabled = false;
+    }
+
+</script>

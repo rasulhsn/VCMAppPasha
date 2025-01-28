@@ -1,0 +1,76 @@
+﻿@page
+@model VCMApp.UI.Areas.Admin.Pages.ExamResultsModel
+@{
+    ViewData["Title"] = "Exam Results";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">Exam Results</h2>
+    <table class="table table-striped table-bordered mt-4">
+        <thead class="table-dark">
+            <tr>
+                <th>Applied Vacancy</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Correct Answers</th>
+                <th>Incorrect Answers</th>
+                <th>Percentage</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var result in Model.ExamResults)
+            {
+                var percentageClass = result.ResultPercentage >= 75 ? "text-success" :
+                result.ResultPercentage >= 50 ? "text-warning" : "text-danger";
+                <tr>
+                    <td>@result.VacancyName</td>
+                    <td>@result.FirstName</td>
+                    <td>@result.LastName</td>
+                    <td>@result.Email</td>
+                    <td>@result.CorrectAnswersCount</td>
+                    <td>@result.InCorrectAnswersCount</td>
+                    <td class="@percentageClass">@result.ResultPercentage%</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" onclick="openPopup('@result.ApplicationId')">View Answers</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="questionsModal" tabindex="-1" aria-labelledby="questionsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="questionsModalLabel">Questions and Answers</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="questionsContent">
+                    <!-- Questions and Answers will be loaded here dynamically -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openPopup(applicationId) {
+        fetch(`/Admin/ExamResult?handler=ExamAnswers&applicationId=${applicationId}`)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('questionsContent').innerHTML = data;
+                new bootstrap.Modal(document.getElementById('questionsModal')).show();
+            })
+            .catch(error => {
+                console.error('Error fetching questions:', error);
+                alert('Unable to fetch questions and answers.');
+            });
+    }
+</script>

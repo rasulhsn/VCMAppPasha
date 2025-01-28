@@ -1,0 +1,27 @@
+﻿@page "/ExamFinish/{sessionId:guid}"
+@model ExamFinishModel
+
+<div class="text-center">
+    <h1 class="display-4">Exam Completed</h1>
+</div>
+
+<div class="container d-flex flex-column align-items-center mt-5">
+    <p class="mt-3">You have completed the exam.</p>
+
+    <div class="mt-5">
+        <h3>Please upload your CV</h3>
+        <p>We encourage you to upload your CV in PDF format for further processing.</p>
+
+        <form method="post" enctype="multipart/form-data" class="mt-4" id="cvUploadForm" asp-page-handler="UploadCv" asp-route-sessionId="@Model.SessionId">
+            <div class="form-group">
+                <input type="file" name="CVFile" accept=".pdf" class="form-control-file" id="cvFileInput" required />
+            </div>
+
+            <div class="progress mt-3" style="height: 25px;">
+                <div class="progress-bar" id="uploadProgressBar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg mt-4">Upload CV</button>
+        </form>
+    </div>
+</div>

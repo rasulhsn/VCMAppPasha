@@ -1,0 +1,41 @@
+﻿@page "{vacancyId:int}"
+@model ApplyFormModel
+@{
+    ViewData["Title"] = "Apply for Vacancy";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Apply for Vacancy</h1>
+</div>
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="col-md-6">
+        <form method="post">
+            <div class="form-group">
+                <label for="FirstName">First Name</label>
+                <input asp-for="Applicant.FirstName" class="form-control form-control-sm" id="FirstName" />
+                <span asp-validation-for="Applicant.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="LastName">Last Name</label>
+                <input asp-for="Applicant.LastName" class="form-control form-control-sm" id="LastName" />
+                <span asp-validation-for="Applicant.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="PhoneNumber">Phone Number</label>
+                <input asp-for="Applicant.PhoneNumber" class="form-control form-control-sm" id="PhoneNumber" />
+                <span asp-validation-for="Applicant.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Email">Email Address</label>
+                <input asp-for="Applicant.Email" class="form-control form-control-sm" id="Email" />
+                <span asp-validation-for="Applicant.Email" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Submit Application</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
