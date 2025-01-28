@@ -37,7 +37,7 @@ namespace VCMApp.Application.Applicants.Vacancy
             }
             if (!AllowedTypes.Contains(request.ContentType))
             {
-                Result.Failure("Invalid file type. Only PDF and DOCX files are allowed.");
+                Result.Failure("Invalid file type. Only PDF or DOCX files are allowed.");
             }
             if (request.FileContent.Length > MaxFileSize)
             {
