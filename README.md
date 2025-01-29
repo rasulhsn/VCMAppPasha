@@ -6,13 +6,13 @@ This project is a Vacancy Management Application developed as part of a task for
 `P.S. Not all features have been implemented; only the minimal requirements specified by Pasha Insurance have been completed.`
 
 ### Guest-Side Features:
-Vacancy Application: Users can browse and apply for vacancies.
-Online Exam: After applying, users take an online exam to assess their suitability.
-CV Submission: Users upload their CVs as part of the application process.
+- Vacancy Application: Users can browse and apply for vacancies.
+- Online Exam: After applying, users take an online exam to assess their suitability.
+- CV Submission: Users upload their CVs as part of the application process.
 
 ### Admin-Side Features:
-Dashboard: Provides an overview of vacancies, applications, and exams.
-Exam Results Management: Admins can view exam results, including detailed answers for each candidate.
+- Dashboard: Provides an overview of vacancies, applications, and exams.
+- Exam Results Management: Admins can view exam results, including detailed answers for each candidate.
 
 ### Architecture
 ```mermaid
